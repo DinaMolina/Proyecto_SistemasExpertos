@@ -1,0 +1,24 @@
+.img-principal{
+    background-color: #3E1A40;
+    width: 643px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 55px;
+    margin-bottom: 25px;
+}
+.card-secundario{
+    background-color: #3E1A40;
+    color: white;
+}
+
+.icono{
+    font-size: 60px;
+    padding-left: 133px;
+    padding-top: 10px;
+}
+
+.abajo{
+    background-color: #1A2040 !important;
+    color: azure;
+}
+

@@ -55,3 +55,34 @@
     font-weight: bold;
     padding: 10px;
 }
+.principal{
+    background-color: #1A2040 !important;
+    color: white !important;
+}
+.btn-ingresar{
+    background-color:#fff6da;
+    color: #3E1A40;
+    border-color: #F2E1AC;
+    font-weight: bold;
+}
+.btn-ingresar:hover{
+    background-color:#F2E1AC;
+    color: #3E1A40;
+    border-color: #F2E1AC;
+}
+.opcion-registro{
+    background-color: #F2E1AC;
+    color: #3E1A40;
+    border-color: #F2E1AC;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.opcion-registro:active{
+    background-color:  #F2E1AC !important;
+    color: #3E1A40 !important;
+}
+.opcion-registro:visited{
+    background-color: #fff6da !important;
+    color: #3E1A40 !important;
+}
