@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { RegistroClienteComponent } from './paginas/registro-cliente/registro-cliente.component';
@@ -11,8 +12,11 @@ import { LoginComponent } from './paginas/login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DesignComponent } from './paginas/design/design.component';
 import { QuillModule } from 'ngx-quill';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { GaleriaImagenesComponent } from './paginas/design/galeria-imagenes/galeria-imagenes.component';
+import { ColoresComponent } from './paginas/design/colores/colores.component';
+import { VentasComponent } from './paginas/ventas/ventas.component';
+import { EmpresaComponent } from './paginas/empresa/empresa.component';
 
 
 
@@ -24,15 +28,20 @@ import { QuillModule } from 'ngx-quill';
     LoginComponent,
     DesignComponent,
     HeaderComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    GaleriaImagenesComponent,
+    ColoresComponent,
+    VentasComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     QuillModule.forRoot(), 
-    RouterModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

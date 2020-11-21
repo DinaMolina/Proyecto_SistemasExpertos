@@ -1,0 +1,28 @@
+.principal{
+    background-color: #1A2040 !important;
+    color: white !important;
+}
+.btn-ingresar{
+    background-color:#fff6da;
+    color: #3E1A40;
+    border-color: #F2E1AC;
+    font-weight: bold;
+    width: 210px
+}
+.btn-ingresar:hover{
+    background-color:#F2E1AC;
+    color: #3E1A40;
+    border-color: #F2E1AC;
+}
+
+.btn-comprar{
+    background-color:#fff6da;
+    color: #3E1A40;
+    border-color: #F2E1AC;
+    font-weight: bold;
+}
+
+.informacion{
+    color: #1A2040;
+    font-weight: bold;
+}

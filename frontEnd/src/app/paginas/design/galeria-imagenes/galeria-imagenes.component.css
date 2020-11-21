@@ -8,7 +8,11 @@
     margin-right: auto;
 }
 
-
+.list-group-item:hover{
+    cursor: pointer;
+    border-color: bisque;
+    border-width: 0.5rem;
+}
 
 .menu-opciones{
     margin-top: 19px;
@@ -19,7 +23,9 @@
     font-size: 19px;
 }
 
-
+.list-colores{
+    padding: 35px;
+}
 .herramientas{
     background-color: #1A2040 !important;
 }
@@ -79,9 +85,4 @@
 .opcion-registro:visited{
     background-color: #fff6da !important;
     color: #3E1A40 !important;
-}
-
-.txt-prom{
-    color:  #1A2040;
-    font-weight: bolder;
 }
