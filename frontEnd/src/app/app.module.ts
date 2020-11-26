@@ -17,6 +17,8 @@ import { GaleriaImagenesComponent } from './paginas/design/galeria-imagenes/gale
 import { ColoresComponent } from './paginas/design/colores/colores.component';
 import { VentasComponent } from './paginas/ventas/ventas.component';
 import { EmpresaComponent } from './paginas/empresa/empresa.component';
+import {HttpClientModule} from '@angular/common/http';
+
 
 
 
@@ -39,7 +41,8 @@ import { EmpresaComponent } from './paginas/empresa/empresa.component';
     AppRoutingModule,
     RouterModule,
     QuillModule.forRoot(), 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

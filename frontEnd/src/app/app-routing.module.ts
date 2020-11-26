@@ -5,8 +5,6 @@ import { RegistroEmpresaComponent } from './paginas/registro-empresa/registro-em
 import { LoginComponent } from './paginas/login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DesignComponent } from './paginas/design/design.component';
-import { GaleriaImagenesComponent } from './paginas/design/galeria-imagenes/galeria-imagenes.component';
-import { ColoresComponent } from './paginas/design/colores/colores.component';
 import { VentasComponent } from './paginas/ventas/ventas.component';
 import { EmpresaComponent } from './paginas/empresa/empresa.component';
 
@@ -26,12 +24,6 @@ const routes: Routes = [
   },
   {
     path: 'admin-companies/design', component: DesignComponent
-  },
-  {
-    path: 'admin-companies/design/galeria', component: GaleriaImagenesComponent, pathMatch: 'full'
-  },
-  {
-    path: 'admin-companies/design/colores', component: ColoresComponent
   },
   {
     path: 'ventas', component: VentasComponent

@@ -16,50 +16,58 @@
             </li>
           </ul>
           <div class="form-inline my-2 my-lg-0">
-            <div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle opcion-registro" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Regístrate
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="registroCliente.html">Cliente</a>
-                <a class="dropdown-item" href="registroEmpresa.html">Empresarial</a>
-              </div>
-            </div>
-            <a class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40;" href="login.html">Ingresa</a>
+            <button class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40;">Salir</button>
           </div>
         </div>
       </nav>
       <br>
        <div class="container-fluid">
          <div class="row">
-            <div class="col-6">   
+            <div class="col-6"> 
+              <!--nav de herramientas-->  
               <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#"><i class="fas fa-tools"></i>Herramientas</a>
+                <button class="btn-herramientas" type="button" (click)="verInicio()"><i class="fas fa-tools"></i>Herramientas</button>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link"><i class="fas fa-images"></i>Plantillas</a>
+                      <button class="btn-herramientas" type="button" (click)="verPlantillas()"><i class="fas fa-images"></i>Plantillas</button>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#"><i class="fas fa-file-word"></i>Estilos Títulos</a>
+                      <button class="btn-herramientas" type="button" (click)="verTexto()"><i class="fas fa-file-word"></i>Estilos Títulos</button>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" [routerLink]= "['galeria']"><i class="fas fa-camera"></i>Imágenes</a>
+                      <button class="btn-herramientas"  type="button" (click)="verImagenes()"><i class="fas fa-camera"></i>Imágenes</button>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" [routerLink]= "['colores']"><i class="fas fa-paint-roller"></i>Colores de fondo</a>
+                      <button class="btn-herramientas" type="button" (click)="verColores()"><i class="fas fa-paint-roller"></i>Colores de fondo</button>
                     </li>
                   </ul>
                 </div>
               </nav>
-              <div class="card bg-dark text-white">
+              <div class="card bg-dark text-white" *ngIf= "this.regionVisible == 'herramientas'">
                 <img src="../assets/img/card4.png" class="card-img" alt="...">
                 <div class="card-img-overlay">
                   <h1 class="card-title txt-prom display-4">¡Bienvenido a la página de diseño!</h1>
                 </div>
+              </div>
+              <!--PLANTILLAS-->
+              <div *ngIf= "this.regionVisible == 'plantillas'">
+
+              </div>
+              <!--TEXTO-->
+              <div *ngIf= "this.regionVisible == 'texto'">
+
+              </div>
+              <!--IMAGENES-->
+              <div *ngIf= "this.regionVisible == 'imagenes'">
+                <app-galeria-imagenes></app-galeria-imagenes>
+              </div>
+              <!--COLORES-->
+              <div *ngIf= "this.regionVisible == 'colores'">
+                <app-colores></app-colores>
               </div>
            </div>
            <div class="col-6">

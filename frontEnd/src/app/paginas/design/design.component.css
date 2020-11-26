@@ -58,6 +58,8 @@
     color: #3E1A40;
     border-color: #F2E1AC;
     font-weight: bold;
+    width: 190px;
+    margin-right: 35px;
 }
 .btn-ingresar:hover{
     background-color:#F2E1AC;
@@ -84,4 +86,9 @@
 .txt-prom{
     color:  #1A2040;
     font-weight: bolder;
+}
+
+.btn-herramientas{
+    background-color: #F7F7F7;
+    border-color: #F7F7F7;
 }

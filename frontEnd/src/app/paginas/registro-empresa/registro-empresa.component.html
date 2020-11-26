@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row ">
             <div class="col-12">
-                <form  [formGroup]="formularioEmpresa" class="formulario-registro">
+                <form  [formGroup]="formularioEmpresa" class="formulario-registro" (ngSubmit)="guardar(formularioEmpresa)">
                     <img src="../assets/img/logo.png">
                     <h3 style="padding-left: 38px;">Registra tu empresa</h3>
                     <div class="container">
@@ -32,13 +32,13 @@
                     </div>
                     <div class="form-group datos">
                       <label for="exampleInputPassword1">Tipo de empresa</label>
-                      <input type="password" class="form-control input-entrar" formControlName="tipoEmpresa" placeholder="Contraseña">
+                      <input type="text" class="form-control input-entrar" formControlName="tipoEmpresa" placeholder="Tipo de empresa">
                     </div>
                     <div class="form-group datos">
                       <label for="exampleInputPassword1">Contraseña</label>
-                      <input type="password" class="form-control input-entrar" formControlName="password" placeholder="Repita Contraseña">
+                      <input type="password" class="form-control input-entrar" formControlName="password" placeholder="Contraseña">
                     </div>
-                    <a href="paginaDiseño.html" class="btn btn-entrar">Registrar</a>
+                    <button type="submit" class="btn btn-entrar">Registrar</button>
                   </form>
             </div>
         </div>
