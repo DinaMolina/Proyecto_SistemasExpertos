@@ -1,6 +1,6 @@
 .pantalla{
     width: 40rem;
-    height: 26rem;
+    height: 27rem;
 }
 
 .colores{
@@ -91,4 +91,38 @@
 .btn-herramientas{
     background-color: #F7F7F7;
     border-color: #F7F7F7;
+}
+
+.btn-general{
+    background-color: #3E1A40;
+    color: white; 
+    border-color: #1A2040; 
+}
+
+.card-img-top:hover{
+    cursor: pointer;
+    width: 270px;
+}
+
+.col{
+    height: 50px;
+}
+.col:hover{
+    cursor: pointer;
+    border: 2px solid black;
+    width: 200px;
+   
+}
+
+.card-bloques{
+    border: 1px solid black;
+}
+
+.card-bloques:hover{
+    cursor: pointer;
+    width: 300px;
+}
+
+.estilo{
+    height: 300px;
 }

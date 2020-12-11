@@ -13,11 +13,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DesignComponent } from './paginas/design/design.component';
 import { QuillModule } from 'ngx-quill';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GaleriaImagenesComponent } from './paginas/design/galeria-imagenes/galeria-imagenes.component';
-import { ColoresComponent } from './paginas/design/colores/colores.component';
 import { VentasComponent } from './paginas/ventas/ventas.component';
 import { EmpresaComponent } from './paginas/empresa/empresa.component';
 import {HttpClientModule} from '@angular/common/http';
+import { CommonModule } from "@angular/common";
 
 
 
@@ -31,8 +30,6 @@ import {HttpClientModule} from '@angular/common/http';
     DesignComponent,
     HeaderComponent,
     LandingPageComponent,
-    GaleriaImagenesComponent,
-    ColoresComponent,
     VentasComponent,
     EmpresaComponent
   ],
@@ -42,9 +39,11 @@ import {HttpClientModule} from '@angular/common/http';
     RouterModule,
     QuillModule.forRoot(), 
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
