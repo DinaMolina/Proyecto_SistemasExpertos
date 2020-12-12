@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 var esquema = new mongoose.Schema({
     idEmpresa: String,
     colorFondo: String,
+    colorHeader: String,
+    colorBloque: String,
     imagenFondo: String,
     titulo: String,
     infoBloque1: String,

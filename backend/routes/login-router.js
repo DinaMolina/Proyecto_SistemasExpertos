@@ -28,6 +28,7 @@ router.post('/', function(req, res){
               const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
               const dataUser = {
                 nombre: user.nombre,
+                idCliente: user._id,
                 pagina: 'ventas',
                 accessToken: accessToken,
                 expiresIn: expiresIn
@@ -55,8 +56,9 @@ router.post('/', function(req, res){
               const expiresIn = 24 * 60 * 60;
               const accessToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: expiresIn });
               const dataUser = {
-                nombre: user.nombre,
+                nombre: user.nombreEmpresa,
                 pagina: 'admin-companies',
+                idEmpresa: user._id,
                 accessToken: accessToken,
                 expiresIn: expiresIn
               }

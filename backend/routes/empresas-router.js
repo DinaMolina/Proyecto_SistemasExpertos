@@ -1,11 +1,12 @@
 var express = require('express');
 var empresa = require('../models/empresa.js');
 var jwt = require('jsonwebtoken');
+var multer = require('../libs/multer')
 var router = express.Router();
 const SECRET_KEY = 'secretkey123456';
 
 //Guardar un nuevo cliente
-router.post('/', function(req, res){
+router.post( '/', multer.single('imagen'),function(req, res){
     let u = new empresa(
         {
         nombre: req.body.nombre,
@@ -14,6 +15,7 @@ router.post('/', function(req, res){
         email: req.body.email,
         tipoEmpresa: req.body.tipoEmpresa,
         password: req.body.password,  
+        imagen: req.file.path
     });
     u.save()
     .then(result=>{

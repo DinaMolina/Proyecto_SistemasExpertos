@@ -7,7 +7,8 @@ var esquema = new mongoose.Schema({
     email: String,
     tipoEmpresa: String,
     fechaNacimiento: Date,
-    password: String 
+    password: String,
+    imagen: String 
 });
 
 module.exports = mongoose.model('empresas', esquema);
