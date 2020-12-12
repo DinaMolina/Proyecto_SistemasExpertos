@@ -6,6 +6,7 @@ import { UserI } from '../../models/user';
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-registro-empresa',
   templateUrl: './registro-empresa.component.html',
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class RegistroEmpresaComponent implements OnInit {
   empresas: any = [];
+  imagen: any;
+  file: File;
   formularioEmpresa = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     apellido: new FormControl('', [Validators.required]),
@@ -36,4 +39,7 @@ export class RegistroEmpresaComponent implements OnInit {
       this.router.navigateByUrl(`/${res.dataUser.pagina}`);
     });
   }
+
+  
+  
 }

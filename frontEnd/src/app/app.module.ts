@@ -17,6 +17,7 @@ import { VentasComponent } from './paginas/ventas/ventas.component';
 import { EmpresaComponent } from './paginas/empresa/empresa.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CommonModule } from "@angular/common";
+import { SitioComponent } from './paginas/sitio/sitio.component';
 
 
 
@@ -31,7 +32,8 @@ import { CommonModule } from "@angular/common";
     HeaderComponent,
     LandingPageComponent,
     VentasComponent,
-    EmpresaComponent
+    EmpresaComponent,
+    SitioComponent
   ],
   imports: [
     BrowserModule,

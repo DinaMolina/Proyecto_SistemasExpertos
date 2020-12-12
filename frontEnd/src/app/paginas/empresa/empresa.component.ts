@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -13,9 +14,14 @@ export class EmpresaComponent implements OnInit {
      imagen: new FormControl('', [Validators.required]),
     descripcion: new FormControl('', [Validators.required])
   });
-  constructor() { }
+  nombreEmpresa: string;
+  idEmpresa: string;
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+   this.nombreEmpresa = this.authService.getNombre();
+   this.idEmpresa = this.authService.getId();
+   console.log(this.nombreEmpresa);
   }
   
 }

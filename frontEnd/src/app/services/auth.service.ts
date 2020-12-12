@@ -13,6 +13,8 @@ export class AuthService {
   AUTH_SERVER: string = 'http://localhost:8888';
   authSubject = new BehaviorSubject(false);
   private token: string;
+  nombre: string;
+  id: any;
   constructor(private httpClient: HttpClient) { }
 
   private saveToken(token: string, expiresIn: string): void {
@@ -57,6 +59,8 @@ export class AuthService {
         (res: JwtResponseI) => {
           if (res) {
             // guardar token
+            this.nombre = res.dataUser.nombre;
+            this.id = res.dataUser.id;
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         })
@@ -67,6 +71,13 @@ export class AuthService {
     this.token = '';
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
+  }
+
+  getNombre(){
+    return this.nombre;
+  }
+  getId(){
+    return this.id;
   }
 
 }
