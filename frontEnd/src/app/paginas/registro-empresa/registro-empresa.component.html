@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group datos">
                       <label for="exampleInputPassword1">Imagen de la empresa</label>
-                      <input type="file" class="form-control input-entrar" formControlName="imagen" (click)="obtenerImagen($event)" #photoInput>
+                      <input type="file" class="form-control input-entrar" formControlName="imagen" (change)="obtenerImagen($event)" #photoInput>
                     </div>
                     <button type="submit" class="btn btn-entrar">Registrar</button>
                   </form>

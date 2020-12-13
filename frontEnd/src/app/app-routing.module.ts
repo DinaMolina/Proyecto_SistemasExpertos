@@ -7,6 +7,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { DesignComponent } from './paginas/design/design.component';
 import { VentasComponent } from './paginas/ventas/ventas.component';
 import { EmpresaComponent } from './paginas/empresa/empresa.component';
+import { SitioComponent } from './paginas/sitio/sitio.component';
 
 
 const routes: Routes = [ 
@@ -30,6 +31,9 @@ const routes: Routes = [
   },
   {
     path: 'admin-companies', component: EmpresaComponent
+  },
+  {
+    path: 'sitio', component: SitioComponent
   }
 ];
 

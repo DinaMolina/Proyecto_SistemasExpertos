@@ -4,6 +4,6 @@ export interface JwtResponseI {
       nombre: string,
       pagina: string,
       accessToken: string,
-      expiresIn: string
+      expiresIn: string, 
     }
 }

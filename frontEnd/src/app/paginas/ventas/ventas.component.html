@@ -14,7 +14,7 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <div class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40;">Cliente Actual</div>
+        <div class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40;">Bievenido(a), {{cliente}}</div>
       </div>
     </div>
   </nav>
@@ -22,13 +22,13 @@
 
   <div class="container-fluid">
       <div class="row">
-          <div class="col-4">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+          <div class="col-4" *ngFor= "let empresa of empresas">
+            <div class="card">
+                <img [src]="'http://localhost:8888/'+ empresa.imagen" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title informacion">Nombre Producto</h5>
-                  <p class="card-text informacion">Empresa</p>
-                  <a href="#" class="btn btn-comprar"> <i class="fas fa-shopping-cart"></i>Comprar</a>
+                  <h5 class="card-title informacion">{{empresa.nombreEmpresa}}</h5>
+                  <p class="card-text informacion">{{empresa.tipoEmpresa}}</p>
+                  <a href="#" class="btn btn-comprar"> <i class="fas fa-shopping-cart"></i>Ver página</a>
                 </div>
               </div>
           </div>

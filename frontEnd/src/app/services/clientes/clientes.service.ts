@@ -5,10 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SitiowebService {
+export class ClientesService {
 
   constructor(private httpClient: HttpClient) { }
-  guardarAplicacion(id):Observable<any>{
-    return this.httpClient.post(`http://localhost:8888/sitioweb/`,{});
+
+  listarEmpresas():Observable<any>{
+    return this.httpClient.get('http://localhost:8888/empresas',{});
   }
+  
 }

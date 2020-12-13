@@ -18,6 +18,7 @@ import { EmpresaComponent } from './paginas/empresa/empresa.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 import { SitioComponent } from './paginas/sitio/sitio.component';
+import {FileInputAccessorModule} from "file-input-accessor";
 
 
 
@@ -42,7 +43,8 @@ import { SitioComponent } from './paginas/sitio/sitio.component';
     QuillModule.forRoot(), 
     ReactiveFormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    FileInputAccessorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -22,7 +22,8 @@ export class RegistroEmpresaComponent implements OnInit {
     nombreEmpresa: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     tipoEmpresa: new FormControl('', [Validators.required]),
-    password : new FormControl('', [Validators.required])
+    password : new FormControl('', [Validators.required]),
+    imagen: new FormControl()
   });
 
   constructor(private httpClient:HttpClient, private authService: AuthService, private router: Router) { }
@@ -35,11 +36,22 @@ export class RegistroEmpresaComponent implements OnInit {
     });
   }
   guardar(form){
-    this.authService.registerEmpresas(form.value).subscribe(res => {
+    this.authService.registerEmpresas(form.value, this.file).subscribe(res => {
       this.router.navigateByUrl(`/${res.dataUser.pagina}`);
     });
   }
 
-  
-  
+  obtenerImagen(event){
+    if(event.target.files && event.target.files.length>0){//Identifica si hay archivos
+      const file=event.target.files[0];
+      if(file.type.includes("image")){//Evaluar si es una imagen
+          const reader= new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload=function load(){
+              this.image=reader.result; //Asignar al thumbnail
+          }.bind(this);
+          this.file=file;
+      }
+    }  
+  } 
 }

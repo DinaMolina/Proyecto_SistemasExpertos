@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserI } from '../models/user';
+import { EmpresaI } from '../models/empresa';
 import { JwtResponseI } from '../models/jwr-response';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,17 +38,30 @@ export class AuthService {
         (res: JwtResponseI) => {
           if (res) {
             // guardar token
+            this.nombre = res.dataUser.nombre;
+            this.id = res.dataUser.id;
            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         })
       );
   }
-  registerEmpresas(user: UserI): Observable<JwtResponseI> {
+  registerEmpresas(user: EmpresaI, file: File): Observable<JwtResponseI> {
+    const fd = new FormData();
+    fd.append('id', user.id);
+    fd.append('nombre', user.nombre);
+    fd.append('apellido', user.apellido);
+    fd.append('nombreEmpresa', user.nombreEmpresa);
+    fd.append('email', user.email);
+    fd.append('tipoEmpresa', user.tipoEmpresa);
+    fd.append('password', user.password);
+    fd.append('imagen', file);
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/empresas`,
-      user).pipe(tap(
+      fd).pipe(tap(
         (res: JwtResponseI) => {
           if (res) {
             // guardar token
+            this.nombre = res.dataUser.nombre;
+            this.id = res.dataUser.id;
            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         })
@@ -54,7 +69,7 @@ export class AuthService {
   }
 
   login(user: UserI): Observable<JwtResponseI> {
-    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/login`,
+    return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/login`, 
       user).pipe(tap(
         (res: JwtResponseI) => {
           if (res) {

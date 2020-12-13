@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorChangeContent, EditorChangeSelection, QuillModule } from 'ngx-quill';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { EmpresaService } from '../../services/empresa/empresa.service';
+import {HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -39,17 +43,17 @@ export class DesignComponent implements OnInit {
   bloque3: string;
   bloque4: string;
   bloque5: string;
-  
-  paginaWeb : any = [];
-
-  constructor() { }
+  idEmpresa: any;
+  constructor(private authService: AuthService, private empresaService: EmpresaService, private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.editor = new FormGroup({
       'texto': new FormControl(null)
     });
-    
+    this.idEmpresa = this.authService.getId();  
+    console.log(this.editorContent);
   }
+
   changedEditor(event: EditorChangeContent | EditorChangeSelection){
     console.log(event);   
   }
@@ -88,7 +92,7 @@ export class DesignComponent implements OnInit {
     this.colorHeader = color;
   }
   guardarPagina(){
-    this.paginaWeb = [
+    let paginaWeb = 
       {
         'colorFondo': this.colorSeleccionado,
         'colorHeader': this.colorHeader,
@@ -101,12 +105,16 @@ export class DesignComponent implements OnInit {
         'infoBloque4': this.bloque4,
         'infoBloque5': this.bloque5
       }
-    ];
-    console.log(this.paginaWeb);
-
+    ;
+    //console.log(this.paginaWeb);
+    this.empresaService.guardarSitio(this.idEmpresa,paginaWeb).subscribe(res => {
+     // this.router.navigateByUrl(`/`);
+     console.log(res);
+    });  
   }
+
   textoHeader(){
-    this.editorContent = this.editor.get('texto').value;
+    this.editorContent= this.editor.get('texto').value;
   }
   textoBloque1(){
     this.bloque1 = this.editor.get('texto').value;
@@ -124,4 +132,5 @@ export class DesignComponent implements OnInit {
   textoBloque5(){
     this.bloque5 = this.editor.get('texto').value;
   }
+
 }
