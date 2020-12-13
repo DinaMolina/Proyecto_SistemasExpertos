@@ -7,7 +7,7 @@ var dataBase = require('./modules/database');
 var clientesRouter = require('./routes/clientes-router');
 var empresasRouter = require('./routes/empresas-router');
 var loginRouter = require('./routes/login-router');
-var sitioWebRouter = require('./routes/sitioWeb-router');
+
 
 
 var app = express();
@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use('/clientes', clientesRouter);
 app.use('/empresas', empresasRouter);
 app.use('/login', loginRouter);
-app.use('/sitioweb', sitioWebRouter);
 app.use('/uploads', express.static(path.resolve('uploads')));
 
 

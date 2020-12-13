@@ -3,6 +3,7 @@ var empresa = require('../models/empresa.js');
 var jwt = require('jsonwebtoken');
 var multer = require('../libs/multer')
 var router = express.Router();
+var mongoose = require('mongoose');
 const SECRET_KEY = 'secretkey123456';
 
 //Guardar un nuevo cliente
@@ -62,6 +63,72 @@ router.get('/', function(req,res){
         res.end();
     });
     
-})
+});
+//Agregar un producto a la pagina web 
+router.put('/:idEmpresa/productos/', multer.single('imagen'), function(req,res){
+    empresa.update(
+        {
+            _id:req.params.idEmpresa,
+    }, {
+        $push:{
+            "productos":{
+                imagen:req.file.path,
+                nombre:req.body.nombre,
+                precio: req.body.precio,
+                descripcion: req.body.descripcion
+            }
+        }    
+    })
+    .then(result=>{
+        res.send(result);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    }); 
+});
+
+//Agregar un producto a la pagina web 
+router.put('/:idEmpresa/sitioweb/', function(req,res){
+    empresa.update(
+        {
+            _id:req.params.idEmpresa,
+    }, {
+        $push:{
+            "sitioweb":{
+                colorFondo: req.body.colorFondo,
+                imagenFondo: req.body.imagenFondo,
+                titulo: req.body.titulo,
+                infoBloque1: req.body.infoBloque1,
+                infoBloque2: req.body.infoBloque2,
+                infoBloque3: req.body.infoBloque3,
+                infoBloque4: req.body.infoBloque4,
+                infoBloque5: req.body.infoBloque5
+            }
+        }    
+    })
+    .then(result=>{
+        res.send(result);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    }); 
+});
+
+//Obtener sitio web
+router.get('/:id/sitioweb', function(req,res){
+    empresa.find({_id:req.params.id})
+    .then(result=>{
+        res.send(result[0]);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    });
+});
 
 module.exports = router;

@@ -8,7 +8,9 @@ var esquema = new mongoose.Schema({
     tipoEmpresa: String,
     fechaNacimiento: Date,
     password: String,
-    imagen: String 
+    imagen: String,
+    productos: Array,
+    sitioweb: Array 
 });
 
 module.exports = mongoose.model('empresas', esquema);
