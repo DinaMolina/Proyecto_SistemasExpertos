@@ -12,11 +12,11 @@
               <a class="nav-link" href="#" style="color: azure;">Sobre Nosotros<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" style="color: azure;">Paquetes</a>
+              <a class="nav-link" [routerLink]= "['sitio']" style="color: azure;">Revisa tu página</a>
             </li>
           </ul>
           <div class="form-inline my-2 my-lg-0">
-            <button class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40;">Salir</button>
+            <a class="btn my-2 my-sm-0 btn-ingresar" [routerLink]= "['']"style="color:  #3E1A40;">Salir</a>
           </div>
         </div>
       </nav>
@@ -56,10 +56,7 @@
                   <h1 class="card-title txt-prom display-4">¡Bienvenido a la página de diseño!</h1>
                 </div>
               </div>
-              <!--PLANTILLAS-
-              <div *ngIf= "this.regionVisible == 'plantillas'">
-
-              </div>-->
+             
               <!--TEXTO-->
               <div *ngIf= "this.regionVisible == 'texto'" style="background-color: beige;">
                 <form [formGroup]="editor" class="estilo"  >

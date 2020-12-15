@@ -6,7 +6,8 @@ var esquema = new mongoose.Schema({
     apellido: String,
     email: String,
     fechaNacimiento: Date,
-    password: String
+    password: String, 
+    compras: Array
 });
 
 

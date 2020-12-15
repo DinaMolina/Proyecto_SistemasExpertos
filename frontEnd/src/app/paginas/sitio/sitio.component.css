@@ -30,3 +30,10 @@
     background-color: #fff6da !important;
     color: #3E1A40 !important;
 }
+.btn-comprar{
+    background-color:#fff6da;
+    color: #3E1A40;
+    border-color: #F2E1AC;
+    font-weight: bold;
+}
+

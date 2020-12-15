@@ -61,10 +61,7 @@ export class DesignComponent implements OnInit {
     this.regionVisible = 'herramientas';
 
   }
-  verPlantilla(){
-    this.regionVisible = 'plantillas';
-
-  }
+  
   verTexto(){
     this.regionVisible = 'texto';
 
@@ -108,7 +105,7 @@ export class DesignComponent implements OnInit {
     ;
     //console.log(this.paginaWeb);
     this.empresaService.guardarSitio(this.idEmpresa,paginaWeb).subscribe(res => {
-     // this.router.navigateByUrl(`/`);
+     this.router.navigateByUrl('admin-companies/design/sitio');
      console.log(res);
     });  
   }

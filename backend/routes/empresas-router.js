@@ -16,7 +16,10 @@ router.post( '/', multer.single('imagen'),function(req, res){
         email: req.body.email,
         tipoEmpresa: req.body.tipoEmpresa,
         password: req.body.password,  
-        imagen: req.file.path
+        imagen: req.file.path,
+        productos: [],
+        sitioweb: [],
+        clientes: []
     });
     u.save()
     .then(result=>{
@@ -98,6 +101,8 @@ router.put('/:idEmpresa/sitioweb/', function(req,res){
         $push:{
             "sitioweb":{
                 colorFondo: req.body.colorFondo,
+                colorHeader: req.body.colorHeader,
+                colorBloques: req.body.colorBloques,
                 imagenFondo: req.body.imagenFondo,
                 titulo: req.body.titulo,
                 infoBloque1: req.body.infoBloque1,
@@ -128,7 +133,33 @@ router.get('/:id/sitioweb', function(req,res){
     .catch(error=>{
         res.send(error);
         res.end();
-    });
+    }
+    );
 });
+
+
+//Guardar los id de los clientes
+router.put('/:idEmpresa/clientes/', function(req,res){
+    empresa.update(
+        {
+            _id:req.params.idEmpresa,
+    }, {
+        $push:{
+            "clientes":{
+                cliente: req.body.cliente,
+                nombreProducto: req.body.nombreProducto
+            }
+        }    
+    })
+    .then(result=>{
+        res.send(result);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    }); 
+});
+
 
 module.exports = router;

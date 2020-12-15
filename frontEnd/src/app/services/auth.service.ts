@@ -16,7 +16,8 @@ export class AuthService {
   authSubject = new BehaviorSubject(false);
   private token: string;
   nombre: string;
-  id: any;
+  idEmpresa: any;
+  idCliente: any;
   constructor(private httpClient: HttpClient) { }
 
   private saveToken(token: string, expiresIn: string): void {
@@ -39,7 +40,7 @@ export class AuthService {
           if (res) {
             // guardar token
             this.nombre = res.dataUser.nombre;
-            this.id = res.dataUser.id;
+            this.idCliente = res.dataUser.id;
            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         })
@@ -61,7 +62,7 @@ export class AuthService {
           if (res) {
             // guardar token
             this.nombre = res.dataUser.nombre;
-            this.id = res.dataUser.id;
+            this.idEmpresa = res.dataUser.id;
            this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         })
@@ -75,7 +76,8 @@ export class AuthService {
           if (res) {
             // guardar token
             this.nombre = res.dataUser.nombre;
-            this.id = res.dataUser.id;
+            this.idEmpresa = res.dataUser.id;
+            this.idCliente = res.dataUser.id;
             this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
           }
         })
@@ -92,7 +94,18 @@ export class AuthService {
     return this.nombre;
   }
   getId(){
-    return this.id;
+    return this.idEmpresa;
+  }
+
+  getIdCliente(){
+    return this.idCliente;
+  }
+
+  setIdEmpresa(id){
+    this.idEmpresa = id;
+  }
+  setIdCliente(id){
+    this.idCliente = id;
   }
 
 }

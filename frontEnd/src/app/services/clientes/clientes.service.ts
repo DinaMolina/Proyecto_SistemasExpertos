@@ -12,5 +12,10 @@ export class ClientesService {
   listarEmpresas():Observable<any>{
     return this.httpClient.get('http://localhost:8888/empresas',{});
   }
-  
+  guardarProductos(id,producto):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/clientes/${id}/compras`, producto);
+  }
+  obtenterCliente(id):Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/clientes/${id}`,{});
+  }
 }

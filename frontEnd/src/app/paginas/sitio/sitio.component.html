@@ -1,55 +1,134 @@
+<div class="modal fade" id="pagos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ingresa los datos de compra</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ingresa tu dirección</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa dirección">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Tarjeta de crédito</label>
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu tarjeta">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="comprarProducto()" >
+          Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <nav class="navbar navbar-expand-lg bg-light principal">
-  <img src="../assets/img/logo.png">
+  <img src="../assets/img/logo.png" >
     <button class="navbar-toggler" style="background-color:  #fff6da;" type="button" data-toggle="collapse" >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav mr-auto" >
         <li class="nav-item active">
-          <a class="nav-link" href="#" style="color: azure;">Bievenido<span class="sr-only">(current)</span></a>
+          <button class="btn-ingresar" style="color:  #3E1A40; margin-left: 300px;
+          height: 56px;
+          width: 220px;" (click)="verProductos()">
+            Observa los productos<span class="sr-only">(current)</span></button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: azure;"></a>
+          <button class="btn-ingresar" (click)="verPagina()" style="color:  #3E1A40; margin-left: 10px; height: 56px;">
+            Mira la página</button>
         </li>
       </ul>
-        <a class="btn my-2 my-sm-0 btn-ingresar" style="color: #3E1A40;" >Salir</a>
+        <a class="btn my-2 my-sm-0 btn-ingresar" style="color: #3E1A40;" [routerLink]= "['']">Salir</a>
     </div>
   </nav>
-  
-
-
-<div class="card mb-3">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+<main *ngIf= "this.regionVisible == 'pagina'" > 
+  <div *ngFor = "let info of infoSitio.sitioweb" style= "background-image: url('../assets/texturas/{{info.imagenFondo}}')" [ngStyle]="{'background-color': info.colorFondo}">
+    <div class="card mb-3" [ngStyle]="{'background-color': info.colorHeader}">
+      <div >
+        <h3 style="margin-left: 500px;" [innerHTML]="info.titulo"></h3>
+      </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-4 " *ngFor = "let info of infoSitio.sitioweb">
+          <div class="card"  [ngStyle]="{'background-color': info.colorBloque}">
+            <div class="card-body">
+              <h4 class=" mb-2 text-muted" [innerHTML]="info.infoBloque1"></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card" [ngStyle]="{'background-color': info.colorBloque}">
+            <div class="card-body" [innerHTML]="info.infoBloque2">
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card" [ngStyle]="{'background-color': info.colorBloque}">
+            <div class="card-body">
+              <h4 class= "mb-2 text-muted" style="width: 300px;" [innerHTML]="info.infoBloque3"></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br> <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-6"  *ngFor = "let info of infoSitio.sitioweb">
+          <div class="card" [ngStyle]="{'background-color': info.colorBloque}">
+            <div class="card-body">
+              <h4 [innerHTML]= "info.infoBloque4"></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-6" >
+          <div class="card" [ngStyle]="{'background-color': info.colorBloque}">
+            <div class="card-body" >
+              <h4 [innerHTML]= "info.infoBloque5"></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <br> <br>
+    <br> <br><br> <br>
+    <br> <br><br> <br>
   </div>
+</main>
 
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+
+<!--PRODUCTOS-->
+<div *ngIf= "this.regionVisible == 'productos'">
+  <br><br>
+  <div class="container">
+    <div class="row"  >
+      <div class="col-3" *ngFor = "let info of infoSitio.productos">
+        <div class="card">
+          <img [src]="'http://localhost:8888/'+ info.imagen" style="height: 15rem;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{info.nombre}}</h5>
+            <p class="card-text">{{info.descripcion}}</p>
+            <p>{{info.precio}}</p>
+            <button class="btn-comprar" data-toggle="modal" data-target="#pagos"
+             (click)="crearProducto(info.imagen,info.nombre,info.precio,info.descripcion)">
+              Comprar</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<br> <br>
-<div class="container">
-  <div class="row">
-    <div class="col-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<br><br><br><br>

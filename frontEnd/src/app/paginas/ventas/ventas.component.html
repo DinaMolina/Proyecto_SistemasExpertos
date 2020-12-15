@@ -7,20 +7,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav mr-auto" >
         <li class="nav-item active">
-          <a class="nav-link" href="#" style="color: azure;">Sobre Nosotros<span class="sr-only">(current)</span></a>
+          <button class="btn-comprar" style="color:  #3E1A40;" (click)="verPagina()" >Observa las empresas<span class="sr-only">(current)</span></button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color: azure;">¿Quieres vender tus productos?</a>
+          <button class="btn-comprar" style="color:  #3E1A40;" (click)="verProductos()" >Mira tus compras</button>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <div class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40;">Bievenido(a), {{cliente}}</div>
+        <div class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40; margin-right: 10px;">Bievenido(a), {{cliente}}</div>
+        <a class="btn my-2 my-sm-0 btn-comprar" style="color:  #3E1A40;" [routerLink]= "['']">Salir</a>
       </div>
     </div>
   </nav>
   <br>
 
-  <div class="container-fluid">
+  <div class="container-fluid" *ngIf= "this.regionVisible == 'pagina'">
       <div class="row">
           <div class="col-4" *ngFor= "let empresa of empresas">
             <div class="card">
@@ -28,9 +29,29 @@
                 <div class="card-body">
                   <h5 class="card-title informacion">{{empresa.nombreEmpresa}}</h5>
                   <p class="card-text informacion">{{empresa.tipoEmpresa}}</p>
-                  <a href="#" class="btn btn-comprar"> <i class="fas fa-shopping-cart"></i>Ver página</a>
+                  <button  class="btn btn-comprar" (click)="visitarPagina(empresa._id)"> <i class="fas fa-shopping-cart"></i>Ver página</button>
                 </div>
               </div>
           </div>
       </div>
   </div>
+
+  <!--PRODUCTOS-->
+<div *ngIf= "this.regionVisible == 'productos'">
+  <br><br>
+  <div class="container">
+    <div class="row"  >
+      <div class="col-3" *ngFor = "let info of usuario.compras">
+        <div class="card">
+          <img [src]="'http://localhost:8888/'+ info.imagen" style="height: 15rem;" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{info.nombre}}</h5>
+            <p class="card-text">{{info.descripcion}}</p>
+            <p>{{info.precio}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br>

@@ -33,7 +33,7 @@ const routes: Routes = [
     path: 'admin-companies', component: EmpresaComponent
   },
   {
-    path: 'sitio', component: SitioComponent
+    path: 'admin-companies/design/sitio', component: SitioComponent
   }
 ];
 

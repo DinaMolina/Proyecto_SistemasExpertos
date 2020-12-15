@@ -2,6 +2,7 @@ var express = require('express');
 var cliente = require('../models/clientes');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
+var mongoose = require('mongoose');
 const SECRET_KEY = 'secretkey123456';
 
 
@@ -13,7 +14,8 @@ router.post('/', function(req, res){
             apellido: req.body.apellido,
             email: req.body.email,
             fechaNacimiento: req.body.fechaNacimiento,
-            password: req.body.password
+            password: req.body.password,
+            compras: []
     });
     u.save()
     .then(result=>{
@@ -40,7 +42,10 @@ router.post('/', function(req, res){
 
 //Obtener un cliente
 router.get('/:id', function(req,res){
-    cliente.find({_id:req.params.id})
+    cliente.find(
+        {
+            _id:mongoose.Types.ObjectId(req.params.id)}
+    )
     .then(result=>{
         res.send(result[0]);
         res.end();
@@ -66,6 +71,32 @@ router.get('/', function(req,res){
         res.end();
     });
     
-})
+});
+
+//Agregar un producto al cliente
+router.put('/:idCliente/compras',  function(req,res){
+    cliente.update(
+        {
+            _id:req.params.idCliente,
+    }, {
+        $push:{
+            "compras":{
+                imagen:req.body.imagen,
+                nombre:req.body.nombre,
+                precio: req.body.precio,
+                descripcion: req.body.descripcion
+            }
+        }    
+    })
+    .then(result=>{
+        res.send(result);
+        res.end();
+    })
+    .catch(error=>{
+        res.send(error);
+        res.end();
+    }); 
+});
+
 
 module.exports = router;

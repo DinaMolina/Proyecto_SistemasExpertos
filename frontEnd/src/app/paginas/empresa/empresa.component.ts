@@ -23,13 +23,32 @@ export class EmpresaComponent implements OnInit {
   nombreEmpresa: string;
   idEmpresa: string;
   file: File;
+  clientes: any = [];
+  clientesEmpresa: any = [];
   constructor(private httpClient:HttpClient, private authService: AuthService, private router: Router, private empresaService: EmpresaService) { }
 
   ngOnInit(): void {
    this.nombreEmpresa = this.authService.getNombre();
    this.idEmpresa = this.authService.getId();
-   console.log(this.nombreEmpresa);
-   console.log(this.idEmpresa);
+   this.empresaService.renderizarSitio(this.idEmpresa).subscribe(
+    res=>{
+      this.clientesEmpresa = res.clientes;
+      this.clientesEmpresa.forEach(cliente => {
+        this.empresaService.obtenerClientes(cliente.cliente).subscribe(
+          res=>{
+            this.clientes.push(res);
+            console.log(this.clientes);
+          },
+          error=>{
+            console.log(error);
+          }
+        )
+      });
+    },
+    error=>{
+      console.log(error);
+    }
+   )
   }
   obtenerImagen(event){
     if(event.target.files && event.target.files.length>0){//Identifica si hay archivos

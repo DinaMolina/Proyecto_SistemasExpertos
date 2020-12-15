@@ -16,7 +16,8 @@
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0">
-        <div class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40;"> Bienvenido, {{nombreEmpresa}}</div>
+        <div class="btn my-2 my-sm-0 btn-ingresar" style="color:  #3E1A40; "> Bienvenido, {{nombreEmpresa}}</div>
+        <a class="btn my-2 my-sm-0 btn-comprar" style="color:  #3E1A40; margin-left: 5px;" [routerLink]= "['']"> Salir</a>
       </div>
     </div>
   </nav>
@@ -73,7 +74,9 @@
           </button>
         </div>
         <div class="modal-body">
-          Maria Juarez
+         <div *ngFor="let cliente of clientes">
+           {{cliente.nombre}} {{cliente.apellido}}
+         </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-comprar" data-dismiss="modal">Close</button>

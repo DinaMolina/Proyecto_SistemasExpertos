@@ -22,4 +22,13 @@ export class EmpresaService {
     return this.httpClient.put(`http://localhost:8888/empresas/${id}/sitioweb`,sitio);
   }
   
+  renderizarSitio(id):Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/empresas/${id}/sitioweb`,{});
+  }
+  guardarIdCliente(idEmpresa, clientes):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/empresas/${idEmpresa}/clientes`, clientes);
+  }
+  obtenerClientes(id):Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/clientes/${id}/`,{});
+  }
 }

@@ -10,7 +10,8 @@ var esquema = new mongoose.Schema({
     password: String,
     imagen: String,
     productos: Array,
-    sitioweb: Array 
+    sitioweb: Array,
+    clientes: Array 
 });
 
 module.exports = mongoose.model('empresas', esquema);

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 //nombre de la base
 let bd = 'espacio';
-let port = '27017';
+const port = '27017';
 let host ='localhost';
 
 class Database{
@@ -9,7 +9,7 @@ class Database{
         this.conectar();
     }
     conectar(){
-        mongoose.connect(`mongodb://${host}:${port}/${bd}`)
+        mongoose.connect(process.env.MONGODB_URI ||`mongodb://${host}:${port}/${bd}`)
         .then(result=>console.log(result))
         .catch(error=>console.log(error));
     }
